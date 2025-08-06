@@ -1,0 +1,1 @@
+# Logs_Diary_GUI
