@@ -45,9 +45,3 @@ A private digital diary, built in Python, featuring a log-writing space with fac
 - `poems.txt` is optional but adds a creative touch  
 - Do not share your `face_data.npy` file—it is unique to your face
 
----
-
-## Author
-
-Developed by [cprisha](https://github.com/cprisha)  
-Python enthusiast and student coder.
