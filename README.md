@@ -32,10 +32,6 @@ A private digital diary, built in Python, featuring a log-writing space with fac
 3. Make sure your webcam is connected  
 4. Run the script:
 
-   ```bash
-   python FirstWindow.py
-   ```
-
 ---
 
 ## Notes
