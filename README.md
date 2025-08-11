@@ -40,4 +40,6 @@ A private digital diary, built in Python, featuring a log-writing space with fac
 - All diary data is stored locally in `Logs/diary.db`  
 - `poems.txt` is optional but adds a creative touch  
 - Do not share your `face_data.npy` file—it is unique to your face
+- For the full project breakdown, including libraries used, personal motivation, and future upgrades, check out the detailed PDF:
+[View LogsDiaryGUI.pdf](LogsDiaryGUI.pdf)
 
