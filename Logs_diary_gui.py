@@ -19,6 +19,15 @@ db_path = os.path.join(Base_directory, "diary.db")
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
+
+root = tk.Tk()
+root.title("Diary App")
+root.geometry("400x400")
+tk.Label(root, text="Select").place(x=13, y=13)
+
+section_frame = tk.Frame(root)
+section_frame.pack()
+
 poem = ""
 try:
     with open("poems.txt", "r", encoding="utf-8") as f:
@@ -127,15 +136,6 @@ CREATE TABLE IF NOT EXISTS entries (
 """)
 
 conn.commit()
-
-root = tk.Tk()
-root.title("Diary App")
-root.geometry("400x400")
-tk.Label(root, text="Select").place(x=13, y=13)
-
-section_frame = tk.Frame(root)
-section_frame.pack()
-
 
 def diary_section():
     cursor.execute("SELECT name FROM sections")
@@ -273,5 +273,6 @@ def add_section():
 
 tk.Button(root, text="Add New SECTION", command=add_section).pack(pady=10)
 refresh_section()
+
 
 root.mainloop()
