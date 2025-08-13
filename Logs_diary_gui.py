@@ -19,15 +19,6 @@ db_path = os.path.join(Base_directory, "diary.db")
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
-
-root = tk.Tk()
-root.title("Diary App")
-root.geometry("400x400")
-tk.Label(root, text="Select").place(x=13, y=13)
-
-section_frame = tk.Frame(root)
-section_frame.pack()
-
 poem = ""
 try:
     with open("poems.txt", "r", encoding="utf-8") as f:
@@ -116,26 +107,41 @@ def FaceLock():
 
 if __name__ == "__main__":
     if FaceLock():
+        # Create main window only after successful authentication
+        root = tk.Tk()
+        root.title("Diary App")
+        root.geometry("400x400")
+        tk.Label(root, text="Select").place(x=13, y=13)
+
+        section_frame = tk.Frame(root)
+        section_frame.pack()
+
+        # Database table creation
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS sections (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT UNIQUE NOT NULL
+        )
+        """)
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS entries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            section TEXT NOT NULL,
+            subject TEXT NOT NULL,
+            body TEXT NOT NULL,
+            UNIQUE(section, subject)
+        )
+        """)
+        conn.commit()
+
+        # Refresh and add section buttons
+        tk.Button(root, text="Add New SECTION", command=add_section).pack(pady=10)
+        refresh_section()
+
         root.mainloop()
+    else:
+        print("Authentication failed. Exiting program.")
 
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS sections (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT UNIQUE NOT NULL
-)
-""")
-
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS entries (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    section TEXT NOT NULL,
-    subject TEXT NOT NULL,
-    body TEXT NOT NULL,
-    UNIQUE(section, subject)
-)
-""")
-
-conn.commit()
 
 def diary_section():
     cursor.execute("SELECT name FROM sections")
@@ -276,3 +282,4 @@ refresh_section()
 
 
 root.mainloop()
+
