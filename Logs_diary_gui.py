@@ -107,7 +107,6 @@ def FaceLock():
 
 if __name__ == "__main__":
     if FaceLock():
-        # Create main window only after successful authentication
         root = tk.Tk()
         root.title("Diary App")
         root.geometry("400x400")
@@ -116,7 +115,6 @@ if __name__ == "__main__":
         section_frame = tk.Frame(root)
         section_frame.pack()
 
-        # Database table creation
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS sections (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -134,7 +132,6 @@ if __name__ == "__main__":
         """)
         conn.commit()
 
-        # Refresh and add section buttons
         tk.Button(root, text="Add New SECTION", command=add_section).pack(pady=10)
         refresh_section()
 
@@ -282,4 +279,5 @@ refresh_section()
 
 
 root.mainloop()
+
 
