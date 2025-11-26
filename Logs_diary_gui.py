@@ -274,10 +274,4 @@ def add_section():
         folder_exists(name)
         refresh_section()
 
-tk.Button(root, text="Add New SECTION", command=add_section).pack(pady=10)
-refresh_section()
-
-
-root.mainloop()
-
 
