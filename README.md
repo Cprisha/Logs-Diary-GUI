@@ -20,6 +20,15 @@ A private digital diary, built in Python, featuring a log-writing space with fac
 
 ---
 
+## Structure:
+
+- [main.py](main.py)
+- [face_lock.py](face_lock.py)
+- [database.py](database.py)
+- [ui.py](ui.py)
+
+---
+
 ## How to Run the Project
 
 1. Clone the repository or download the files  
